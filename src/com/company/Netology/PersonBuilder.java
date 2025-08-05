@@ -42,15 +42,21 @@ public class PersonBuilder implements IPersonBuilder {
     @Override
     public Person build() throws IllegalArgumentException {
 
-        Person person;
-        if(age == -1) {
-            person = new Person(name, surname);
-        } else {
-            person = new Person(name, surname, age);
+        if (name == null || surname == null) {
+            throw new IllegalStateException("Имя и фамилия обязательны");
         }
-        if(address != null) {
+        
+        Person person;
+        if (age != null) {
+            person = new Person(name, surname, age);
+        } else {
+            person = new Person(name, surname);
+        }
+        
+        if (address != null) {
             person.setAddress(address);
         }
+        
         return person;
     }
 }
