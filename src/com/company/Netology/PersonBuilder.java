@@ -41,11 +41,7 @@ public class PersonBuilder implements IPersonBuilder {
 
     @Override
     public Person build() throws IllegalArgumentException {
-        if (name == null) {
-            throw new IllegalArgumentException("поле 'name' обязательно для заполнения");
-        } else if (surname == null) {
-            throw new IllegalArgumentException("поле 'surname' обязательно для заполнения");
-        }
+
         Person person;
         if(age == -1) {
             person = new Person(name, surname);
